@@ -1,0 +1,35 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+#issueTrackerURL = "A valid URL to your issue tracker where people can open bug tickets"
+license = "All-rights-reserved"
+
+[[mods]]
+modId = "craftcards"
+version = "${version}"
+displayName = "Craft Cards"
+authors = "MobSmasher4000"
+description = '''
+Collect cards for buffs and huffs.
+'''
+#logoFile = "assets/craftcards/logo.png"
+
+[[dependencies.craftcards]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.21.1]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.craftcards]]
+modId = "neoforge"
+mandatory = true
+versionRange = "[21.1.182,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.craftcards]]
+modId = "cobblemon"
+mandatory = true
+versionRange = "[1.7.2,)"
+ordering = "AFTER"
+side = "BOTH"
