@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_feather_falling_tier5": {
+      "conditions": {
+        "items": [
+          {
+            "items": "craftcards:feather_falling_tier5"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "craftcards:feather_falling_tier6_upcraft"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_feather_falling_tier5"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "craftcards:feather_falling_tier6_upcraft"
+    ]
+  }
+}

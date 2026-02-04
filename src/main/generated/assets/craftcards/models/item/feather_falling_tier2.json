@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "craftcards:item/feather_falling/feather_falling_tier2"
+  }
+}

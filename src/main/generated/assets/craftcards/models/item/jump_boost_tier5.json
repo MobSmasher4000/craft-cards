@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "craftcards:item/jump_boost/jump_boost_tier5"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_armor_toughness_tier2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "craftcards:armor_toughness_tier2"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "craftcards:armor_toughness_tier3_upcraft"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_armor_toughness_tier2"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "craftcards:armor_toughness_tier3_upcraft"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_luck_boost_tier6": {
+      "conditions": {
+        "items": [
+          {
+            "items": "craftcards:luck_boost_tier6"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "craftcards:luck_boost_tier5_downcraft"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_luck_boost_tier6"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "craftcards:luck_boost_tier5_downcraft"
+    ]
+  }
+}

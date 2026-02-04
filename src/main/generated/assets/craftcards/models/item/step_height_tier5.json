@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "craftcards:item/step_height/step_height_tier5"
+  }
+}

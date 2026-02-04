@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "card_downcraft",
+  "ingredients": [
+    {
+      "item": "craftcards:looting_tier4"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "craftcards:looting_tier3"
+  }
+}

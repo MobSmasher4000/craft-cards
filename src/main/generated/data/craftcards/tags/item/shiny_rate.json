@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "craftcards:shiny_rate_tier0",
+      "required": false
+    },
+    {
+      "id": "craftcards:shiny_rate_tier1",
+      "required": false
+    },
+    {
+      "id": "craftcards:shiny_rate_tier2",
+      "required": false
+    },
+    {
+      "id": "craftcards:shiny_rate_tier3",
+      "required": false
+    },
+    {
+      "id": "craftcards:shiny_rate_tier4",
+      "required": false
+    },
+    {
+      "id": "craftcards:shiny_rate_tier5",
+      "required": false
+    },
+    {
+      "id": "craftcards:shiny_rate_tier6",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "craftcards:step_height_tier0",
+      "required": false
+    },
+    {
+      "id": "craftcards:step_height_tier1",
+      "required": false
+    },
+    {
+      "id": "craftcards:step_height_tier2",
+      "required": false
+    },
+    {
+      "id": "craftcards:step_height_tier3",
+      "required": false
+    },
+    {
+      "id": "craftcards:step_height_tier4",
+      "required": false
+    },
+    {
+      "id": "craftcards:step_height_tier5",
+      "required": false
+    },
+    {
+      "id": "craftcards:step_height_tier6",
+      "required": false
+    }
+  ]
+}

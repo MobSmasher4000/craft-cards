@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "card_upcraft",
+  "key": {
+    "#": {
+      "item": "craftcards:attack_speed_tier2"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "craftcards:attack_speed_tier3"
+  }
+}

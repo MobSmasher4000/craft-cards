@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "craftcards:item/underwater_mining_speed/underwater_mining_speed_tier6"
+  }
+}

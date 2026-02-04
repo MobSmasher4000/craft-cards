@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "craftcards:armor_toughness_tier0",
+      "required": false
+    },
+    {
+      "id": "craftcards:armor_toughness_tier1",
+      "required": false
+    },
+    {
+      "id": "craftcards:armor_toughness_tier2",
+      "required": false
+    },
+    {
+      "id": "craftcards:armor_toughness_tier3",
+      "required": false
+    },
+    {
+      "id": "craftcards:armor_toughness_tier4",
+      "required": false
+    },
+    {
+      "id": "craftcards:armor_toughness_tier5",
+      "required": false
+    },
+    {
+      "id": "craftcards:armor_toughness_tier6",
+      "required": false
+    }
+  ]
+}

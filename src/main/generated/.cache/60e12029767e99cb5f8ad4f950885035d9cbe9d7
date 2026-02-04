@@ -1,0 +1,27 @@
+// 1.21.1	2026-01-07T19:43:32.1314549	Craft Cards/Tags for minecraft:item
+3928c41d6c39b83e20203055a36d0c0e03de1104 data\craftcards\tags\item\fire_resistance.json
+0845c0a9787b0ddfc61aec1af82be66e1ee2af8b data\craftcards\tags\item\armor.json
+5ef1571cca4755d3007c6868eadb42cb957fd174 data\craftcards\tags\item\size_up.json
+23d21331664f220885c3bad2498f5244dd4942ea data\craftcards\tags\item\speed_boost.json
+f496481e4e038701a148d0caa61d68bba22a6eb4 data\craftcards\tags\item\step_height.json
+5804b3be1cf2b9be16c5cc50ffa6297ef0ba3b36 data\craftcards\tags\item\underwater_mining_speed.json
+fe287a75015342b4afc5219ca1e26a10dbb912ce data\craftcards\tags\item\health_boost.json
+607c411aeb26cf45e46766796539697f190e911a data\craftcards\tags\item\feather_falling.json
+411a4fe4634ea6388afa391323db80c11ab1aa86 data\craftcards\tags\item\fortune.json
+98fe0e557ffb1f3ca8879a3ee444cc1ab8e65511 data\craftcards\tags\item\looting.json
+f729570c23d9a3fb57e84c497458cf54d1591e35 data\craftcards\tags\item\entity_interaction_range.json
+af36527b94e06b91d906a58034ce072fcc5e17ed data\craftcards\tags\item\attack_speed.json
+3713e95fb0e79749aca98665db3d490870b84981 data\craftcards\tags\item\capture_rate.json
+33396db769f9d1372ab2f7179695f8bac5c1545c data\accessories\tags\item\belt.json
+15dee0f3339133475221f31e43c09d5cb5b5a71d data\craftcards\tags\item\mining_speed.json
+6ec25d8e5f7f49912250a7216d454d803e3ffcec data\craftcards\tags\item\card_items.json
+31cfdd2ab582687f0b81e00449e9af36e8a5d4e9 data\craftcards\tags\item\damage.json
+c2acaa2f860b38de7e75adf890c775c9767271c7 data\craftcards\tags\item\water_breathing.json
+63e73d13ed9ad2f3abb642a6a73a85e42c221bf3 data\craftcards\tags\item\regeneration.json
+199b096b523c61ab7d238695e7b8769d73959d8b data\craftcards\tags\item\jump_boost.json
+2e2455d0f30a12a2cad6b613eff1b46190cea591 data\craftcards\tags\item\sneak_speed.json
+94a773abb1ba5a56aa03fd123e7a9b39a7554ac5 data\craftcards\tags\item\block_interaction_range.json
+f4515fca024cfc27323d1c6758ffcbefaeec9781 data\craftcards\tags\item\shiny_rate.json
+9de2de766ca7fe2c86eea60f2e5d483e3a86533c data\craftcards\tags\item\luck_boost.json
+bf47b4dc184f15bf4144fe71c60bd5361a858e61 data\craftcards\tags\item\size_down.json
+9511cb65e2eabc7cf070ba4e1c1b23da8959fd91 data\craftcards\tags\item\armor_toughness.json

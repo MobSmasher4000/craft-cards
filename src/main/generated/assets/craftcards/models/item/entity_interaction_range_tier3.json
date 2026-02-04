@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "craftcards:item/entity_interaction_range/entity_interaction_range_tier3"
+  }
+}

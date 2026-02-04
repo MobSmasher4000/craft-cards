@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "card_upcraft",
+  "key": {
+    "#": {
+      "item": "craftcards:armor_toughness_tier0"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "craftcards:armor_toughness_tier1"
+  }
+}

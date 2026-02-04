@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "card_downcraft",
+  "ingredients": [
+    {
+      "item": "craftcards:feather_falling_tier2"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "craftcards:feather_falling_tier1"
+  }
+}

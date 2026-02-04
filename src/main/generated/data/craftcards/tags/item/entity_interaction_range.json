@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "craftcards:entity_interaction_range_tier0",
+      "required": false
+    },
+    {
+      "id": "craftcards:entity_interaction_range_tier1",
+      "required": false
+    },
+    {
+      "id": "craftcards:entity_interaction_range_tier2",
+      "required": false
+    },
+    {
+      "id": "craftcards:entity_interaction_range_tier3",
+      "required": false
+    },
+    {
+      "id": "craftcards:entity_interaction_range_tier4",
+      "required": false
+    },
+    {
+      "id": "craftcards:entity_interaction_range_tier5",
+      "required": false
+    },
+    {
+      "id": "craftcards:entity_interaction_range_tier6",
+      "required": false
+    }
+  ]
+}

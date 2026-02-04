@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "craftcards:item/block_interaction_range/block_interaction_range_tier3"
+  }
+}

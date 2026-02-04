@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "craftcards:luck_boost_tier0",
+      "required": false
+    },
+    {
+      "id": "craftcards:luck_boost_tier1",
+      "required": false
+    },
+    {
+      "id": "craftcards:luck_boost_tier2",
+      "required": false
+    },
+    {
+      "id": "craftcards:luck_boost_tier3",
+      "required": false
+    },
+    {
+      "id": "craftcards:luck_boost_tier4",
+      "required": false
+    },
+    {
+      "id": "craftcards:luck_boost_tier5",
+      "required": false
+    },
+    {
+      "id": "craftcards:luck_boost_tier6",
+      "required": false
+    }
+  ]
+}

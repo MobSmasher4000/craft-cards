@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "craftcards",
+  "version": "${version}",
+  "name": "Craft Cards",
+  "description": "Cards that increase stats.",
+  "authors": [
+    "MobSmasher4000"
+  ],
+  "license": "All-rights-reserved",
+  "icon": "assets/craftcards/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "org.mob.craftcards.CraftCards"
+    ],
+    "client": [
+      "org.mob.craftcards.CraftCardsClient"
+    ],
+    "fabric-datagen": [
+      "org.mob.craftcards.CraftCardsDataGenerator"
+    ]
+  },
+  "mixins": [
+    "craftcards.mixins.json"
+  ],
+  "depends": {
+    "minecraft": "1.21.1",
+    "cobblemon": ">=1.7.0"
+  }
+}

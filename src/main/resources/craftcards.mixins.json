@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "org.mob.craftcards.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "EnchantmentModifierMixin",
+    "MixinShinyCalculationEvent"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

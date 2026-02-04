@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "craftcards:fortune_tier0",
+      "required": false
+    },
+    {
+      "id": "craftcards:fortune_tier1",
+      "required": false
+    },
+    {
+      "id": "craftcards:fortune_tier2",
+      "required": false
+    },
+    {
+      "id": "craftcards:fortune_tier3",
+      "required": false
+    },
+    {
+      "id": "craftcards:fortune_tier4",
+      "required": false
+    },
+    {
+      "id": "craftcards:fortune_tier5",
+      "required": false
+    },
+    {
+      "id": "craftcards:fortune_tier6",
+      "required": false
+    }
+  ]
+}
