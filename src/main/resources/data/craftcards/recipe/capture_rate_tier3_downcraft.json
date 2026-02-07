@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "card_downcraft",
+  "ingredients": [
+    {
+      "item": "craftcards:capture_rate_tier4"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "craftcards:capture_rate_tier3"
+  }
+}

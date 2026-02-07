@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "craftcards:underwater_mining_speed_tier0",
+      "required": false
+    },
+    {
+      "id": "craftcards:underwater_mining_speed_tier1",
+      "required": false
+    },
+    {
+      "id": "craftcards:underwater_mining_speed_tier2",
+      "required": false
+    },
+    {
+      "id": "craftcards:underwater_mining_speed_tier3",
+      "required": false
+    },
+    {
+      "id": "craftcards:underwater_mining_speed_tier4",
+      "required": false
+    },
+    {
+      "id": "craftcards:underwater_mining_speed_tier5",
+      "required": false
+    },
+    {
+      "id": "craftcards:underwater_mining_speed_tier6",
+      "required": false
+    }
+  ]
+}

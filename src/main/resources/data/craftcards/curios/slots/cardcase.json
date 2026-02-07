@@ -1,0 +1,9 @@
+{
+  "icon": "craftcards:slot/empty_cardcase_slot",
+  "priority": 100,
+  "size": 1,
+  "add_cosmetic": false,
+  "entities": [
+    "minecraft:player"
+  ]
+}

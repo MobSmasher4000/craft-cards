@@ -1,0 +1,10 @@
+{
+  "entries": [
+    "craftcards:add_flight_card_end_treasure",
+    "craftcards:add_random_card_fishing",
+    "craftcards:add_random_card_fishing_treasure",
+    "craftcards:add_random_card_fishing_junk",
+    "craftcards:add_random_card_chests"
+  ],
+  "replace": false
+}

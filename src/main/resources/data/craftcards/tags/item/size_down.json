@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "craftcards:size_down_tier0",
+      "required": false
+    },
+    {
+      "id": "craftcards:size_down_tier1",
+      "required": false
+    },
+    {
+      "id": "craftcards:size_down_tier2",
+      "required": false
+    },
+    {
+      "id": "craftcards:size_down_tier3",
+      "required": false
+    },
+    {
+      "id": "craftcards:size_down_tier4",
+      "required": false
+    },
+    {
+      "id": "craftcards:size_down_tier5",
+      "required": false
+    },
+    {
+      "id": "craftcards:size_down_tier6",
+      "required": false
+    }
+  ]
+}

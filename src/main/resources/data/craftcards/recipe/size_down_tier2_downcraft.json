@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "card_downcraft",
+  "ingredients": [
+    {
+      "item": "craftcards:size_down_tier3"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "craftcards:size_down_tier2"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "craftcards:add_tag_item",
+  "chance": 0.1,
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:gameplay/fishing/treasure"
+    }
+  ],
+  "tag": "#craftcards:loot_card_items"
+}

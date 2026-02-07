@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "card_upcraft",
+  "key": {
+    "#": {
+      "item": "craftcards:underwater_mining_speed_tier4"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "craftcards:underwater_mining_speed_tier5"
+  }
+}

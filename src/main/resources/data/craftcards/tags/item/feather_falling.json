@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "id": "craftcards:feather_falling_tier0",
+      "required": false
+    },
+    {
+      "id": "craftcards:feather_falling_tier1",
+      "required": false
+    },
+    {
+      "id": "craftcards:feather_falling_tier2",
+      "required": false
+    },
+    {
+      "id": "craftcards:feather_falling_tier3",
+      "required": false
+    },
+    {
+      "id": "craftcards:feather_falling_tier4",
+      "required": false
+    },
+    {
+      "id": "craftcards:feather_falling_tier5",
+      "required": false
+    },
+    {
+      "id": "craftcards:feather_falling_tier6",
+      "required": false
+    }
+  ]
+}

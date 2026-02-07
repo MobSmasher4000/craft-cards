@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "craftcards:block_interaction_range_tier1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "craftcards:block_interaction_range_tier1"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "craftcards:block_interaction_range_tier0_downcraft"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "craftcards:block_interaction_range_tier1"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "craftcards:block_interaction_range_tier0_downcraft"
+    ]
+  }
+}

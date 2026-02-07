@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "craftcards:size_down_tier1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "craftcards:size_down_tier1"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "craftcards:size_down_tier2_upcraft"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "craftcards:size_down_tier1"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "craftcards:size_down_tier2_upcraft"
+    ]
+  }
+}

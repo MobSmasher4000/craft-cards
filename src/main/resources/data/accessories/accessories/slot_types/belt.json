@@ -1,0 +1,6 @@
+{
+  "order": 10,
+  "icon": "accessories:slot/belt",
+  "name": "accessories.slot.belt",
+  "validator": "accessories:always_true"
+}

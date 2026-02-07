@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "card_downcraft",
+  "ingredients": [
+    {
+      "item": "craftcards:armor_tier2"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "craftcards:armor_tier1"
+  }
+}

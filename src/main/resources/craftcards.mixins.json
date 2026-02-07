@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.mob.craftcards.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "craftcards.refmap.json",
+  "mixins": [
+    "EnchantmentModifierMixin",
+    "MixinShinyCalculationEvent"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

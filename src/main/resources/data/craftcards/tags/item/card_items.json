@@ -1,0 +1,28 @@
+{
+  "values": [
+    "#craftcards:armor",
+    "#craftcards:armor_toughness",
+    "#craftcards:attack_speed",
+    "#craftcards:block_interaction_range",
+    "#craftcards:capture_rate",
+    "#craftcards:damage",
+    "#craftcards:entity_interaction_range",
+    "#craftcards:feather_falling",
+    "#craftcards:fire_resistance",
+    "#craftcards:fortune",
+    "#craftcards:health_boost",
+    "#craftcards:jump_boost",
+    "#craftcards:looting",
+    "#craftcards:luck_boost",
+    "#craftcards:mining_speed",
+    "#craftcards:regeneration",
+    "#craftcards:shiny_rate",
+    "#craftcards:size_down",
+    "#craftcards:size_up",
+    "#craftcards:sneak_speed",
+    "#craftcards:speed_boost",
+    "#craftcards:step_height",
+    "#craftcards:underwater_mining_speed",
+    "#craftcards:water_breathing"
+  ]
+}

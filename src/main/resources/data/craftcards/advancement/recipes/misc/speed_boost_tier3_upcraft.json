@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "craftcards:speed_boost_tier2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "craftcards:speed_boost_tier2"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "craftcards:speed_boost_tier3_upcraft"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "craftcards:speed_boost_tier2"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "craftcards:speed_boost_tier3_upcraft"
+    ]
+  }
+}

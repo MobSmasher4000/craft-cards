@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "craftcards:capture_rate_tier0": {
+      "conditions": {
+        "items": [
+          {
+            "items": "craftcards:capture_rate_tier0"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "craftcards:capture_rate_tier1_upcraft"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "craftcards:capture_rate_tier0"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "craftcards:capture_rate_tier1_upcraft"
+    ]
+  }
+}

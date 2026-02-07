@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "card_downcraft",
+  "ingredients": [
+    {
+      "item": "craftcards:underwater_mining_speed_tier2"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "craftcards:underwater_mining_speed_tier1"
+  }
+}

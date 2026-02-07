@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "card_upcraft",
+  "key": {
+    "#": {
+      "item": "craftcards:capture_rate_tier3"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "craftcards:capture_rate_tier4"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "card_upcraft",
+  "key": {
+    "#": {
+      "item": "craftcards:health_boost_tier5"
+    }
+  },
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "result": {
+    "count": 1,
+    "id": "craftcards:health_boost_tier6"
+  }
+}

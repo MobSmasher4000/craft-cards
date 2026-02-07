@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "card_downcraft",
+  "ingredients": [
+    {
+      "item": "craftcards:block_interaction_range_tier2"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "craftcards:block_interaction_range_tier1"
+  }
+}

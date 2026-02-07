@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "card_downcraft",
+  "ingredients": [
+    {
+      "item": "craftcards:regeneration_tier1"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "craftcards:regeneration_tier0"
+  }
+}

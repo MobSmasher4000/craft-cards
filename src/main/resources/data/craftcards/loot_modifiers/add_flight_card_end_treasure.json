@@ -1,0 +1,14 @@
+{
+  "type": "craftcards:add_item",
+  "chance": 0.15,
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/end_city_treasure"
+    }
+  ],
+  "item": {
+    "count": 1,
+    "id": "craftcards:flight"
+  }
+}

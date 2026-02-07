@@ -11,7 +11,7 @@ authors = "MobSmasher4000"
 description = '''
 Collect cards for buffs and huffs.
 '''
-#logoFile = "assets/craftcards/logo.png"
+logoFile = "assets/craftcards/logo.png"
 
 [[dependencies.craftcards]]
 modId = "minecraft"
@@ -33,3 +33,6 @@ mandatory = true
 versionRange = "[1.7.2,)"
 ordering = "AFTER"
 side = "BOTH"
+
+[[mixins]]
+config="craftcards.mixins.json"
