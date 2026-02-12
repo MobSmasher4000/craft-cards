@@ -13,6 +13,12 @@
   "tooltip.craftcards.fire_water_effect": "Effect is there even when you can't see the icon",
   "tooltip.craftcards.flight": "Provide creative flight when inside Case",
 
+  "tooltip.craftcards.booster_pack_desc": "Right-click to open!",
+  "tooltip.craftcards.booster_pack_uses": "Uses Remaining: %s",
+  "tooltip.craftcards.booster_pack_cooldown": "Cooldown: %ss",
+  "tooltip.craftcards.cooldown_active": "Cooldown: %ss (Wait)",
+  "tooltip.craftcards.cooldown_ready": "Cooldown: %ss (Ready)",
+
   "stat.craftcards.armor": "Armor",
   "stat.craftcards.armor_toughness": "Armor Toughness",
   "stat.craftcards.health_boost": "Health Boost",
@@ -37,6 +43,7 @@
 
   "item.craftcards.card_case": "Card Case",
   "item.craftcards.flight": "Creative Flight",
+  "item.craftcards.booster_pack": "Booster Card Pack",
 
   "item.craftcards.armor_tier0": "Armor 1",
   "item.craftcards.armor_tier1": "Armor 2",

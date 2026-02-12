@@ -25,23 +25,23 @@ public class TieredCardItem extends Item {
                                 TooltipFlag tooltipFlag) {
 
         // Get Tier
-        Tier tier = Tier.fromItem(stack.getItem());
+        Tier tier = Tier.tierFromItem(stack.getItem());
 
 
         if (stack.is(ModTags.REGENERATION)){
-            int effectAmp = Tier.fromItem(stack.getItem()).ordinal() + 1;
+            int effectAmp = Tier.tierFromItem(stack.getItem()).ordinal() + 1;
             tooltip.add(Component.translatable("tooltip.craftcards.regeneration",effectAmp).withStyle(ChatFormatting.AQUA));
             return;
         }
 
         if (stack.is(ModTags.FORTUNE)){
-            int levelAmp = Tier.fromItem(stack.getItem()).ordinal() + 1;
+            int levelAmp = Tier.tierFromItem(stack.getItem()).ordinal() + 1;
             tooltip.add(Component.translatable("tooltip.craftcards.fortune", levelAmp).withStyle(ChatFormatting.AQUA));
             return;
         }
 
         if (stack.is(ModTags.LOOTING)){
-            int levelAmp = Tier.fromItem(stack.getItem()).ordinal() + 1;
+            int levelAmp = Tier.tierFromItem(stack.getItem()).ordinal() + 1;
             tooltip.add(Component.translatable("tooltip.craftcards.looting", levelAmp).withStyle(ChatFormatting.AQUA));
             return;
         }

@@ -12,6 +12,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.mob.craftcards.CraftCards;
 import org.mob.craftcards.component.ModDataComponentTypes;
 import org.mob.craftcards.helper.Tier;
+import org.mob.craftcards.item.custom.BoosterPackItem;
 import org.mob.craftcards.item.custom.CardCaseItem;
 import org.mob.craftcards.item.custom.TieredCardItem;
 
@@ -22,6 +23,9 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(CraftCards.MOD_ID);
 
     public static final DeferredItem<Item> CARD_CASE = ITEMS.register("card_case",()-> new CardCaseItem(new Item.Properties()));
+
+    public static final DeferredItem<Item> BOOSTER_PACK = ITEMS.register("booster_pack",()-> new BoosterPackItem(new Item.Properties()));
+
     public static final DeferredItem<Item> FIRE_RESISTANCE = ITEMS.register("fire_resistance",()-> new Item(new Item.Properties()){
         @Override
         public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
@@ -29,6 +33,7 @@ public class ModItems {
             super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         }
     });
+
     public static final DeferredItem<Item> WATER_BREATHING = ITEMS.register("water_breathing",()-> new Item(new Item.Properties()){
         @Override
         public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
@@ -36,6 +41,7 @@ public class ModItems {
             super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         }
     });
+
     public static final DeferredItem<Item> FLIGHT = ITEMS.register("flight",()-> new Item(new Item.Properties()){
         @Override
         public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {

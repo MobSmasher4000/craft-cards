@@ -37,7 +37,7 @@ public enum Tier {
         return bonus;
     }
 
-    public static Tier fromItem(Item item) {
+    public static Tier tierFromItem(Item item) {
         ResourceLocation id = BuiltInRegistries.ITEM.getKey(item);
         String path = id.getPath(); // example: "armor_tier3"
 

@@ -26,6 +26,7 @@ public class ModItemGroups {
 
                 // Add single items
                 output.accept(ModItems.CARD_CASE.get());
+                output.accept(ModItems.BOOSTER_PACK.get());
                 output.accept(ModItems.FLIGHT.get());
                 output.accept(ModItems.FIRE_RESISTANCE.get());
                 output.accept(ModItems.WATER_BREATHING.get());

@@ -13,6 +13,7 @@ public class ModTags {
     public static final TagKey<Item> CARD_ITEMS = tagmaker("card_items");
     public static final TagKey<Item> LOOT_CARD_ITEMS = tagmaker("loot_card_items");
 
+    public static final TagKey<Item> GLOBAL_EXEMPT = tagmaker("global_exempt");
     public static final TagKey<Item> FLIGHT = tagmaker("flight");
     public static final TagKey<Item> ARMOR = tagmaker("armor");
     public static final TagKey<Item> ARMOR_TOUGHNESS = tagmaker("armor_toughness");

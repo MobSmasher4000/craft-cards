@@ -67,6 +67,7 @@ public class CardCaseEffectHandler {
 
         UUID uuid = player.getUUID();
         setContext(uuid);
+        ItemStack lastStack = PLAYER_CASE_CACHE.getOrDefault(uuid, ItemStack.EMPTY);
 
         // activeCards returns the full list of case slots (including empty ones)
         List<ItemStack> activeCards = getCardsInCase(currentStack);
@@ -75,11 +76,16 @@ public class CardCaseEffectHandler {
         handleFireResistance(player, activeCards);
         handleWaterBreathing(player, activeCards);
         handleRegeneration(player, activeCards);
-        handleShinyBonus(player, activeCards);
-        handleCaptureBonus(player, activeCards);
-        handleFortuneBonus(player, activeCards);
-        handleLootingBonus(player, activeCards);
-        handleFlight(player, activeCards);
+
+        if (!ItemStack.matches(currentStack, lastStack)){
+            handleShinyBonus(player, activeCards);
+            handleCaptureBonus(player, activeCards);
+            handleFortuneBonus(player, activeCards);
+            handleLootingBonus(player, activeCards);
+            handleFlight(player, activeCards);
+        }
+
+        PLAYER_CASE_CACHE.put(uuid, currentStack.copy());
     }
 
     // --- Player UUID Management ---
@@ -90,8 +96,9 @@ public class CardCaseEffectHandler {
         boolean hasCard = activeCards.size() > 20 && activeCards.get(20).is(ModTags.SHINY_RATE);
 
         if (hasCard) {
-            float bonus = Tier.fromItem(activeCards.get(20).getItem()).getBonus();
-            SHINY_BONUSES.put(player.getUUID(), bonus);
+            float bonus = Tier.tierFromItem(activeCards.get(20).getItem()).getBonus();
+            float globalBonus = (float) CardCaseAttributeHandler.getActiveGlobalBonus(player.getUUID());
+            SHINY_BONUSES.put(player.getUUID(), bonus + globalBonus);
         } else {
             SHINY_BONUSES.remove(player.getUUID()); // Reset on drop
         }
@@ -101,8 +108,9 @@ public class CardCaseEffectHandler {
         boolean hasCard = activeCards.size() > 21 && activeCards.get(21).is(ModTags.CAPTURE_RATE);
 
         if (hasCard) {
-            float bonus = Tier.fromItem(activeCards.get(21).getItem()).getBonus();
-            CAPTURE_BONUSES.put(player.getUUID(), bonus);
+            float bonus = Tier.tierFromItem(activeCards.get(21).getItem()).getBonus();
+            float globalBonus = (float) CardCaseAttributeHandler.getActiveGlobalBonus(player.getUUID());
+            CAPTURE_BONUSES.put(player.getUUID(), bonus + globalBonus);
         } else {
             CAPTURE_BONUSES.remove(player.getUUID()); // Reset on drop
         }
@@ -112,8 +120,13 @@ public class CardCaseEffectHandler {
         boolean hasCard = activeCards.size() > 22 && activeCards.get(22).is(ModTags.FORTUNE);
 
         if (hasCard) {
-            int bonus = Tier.fromItem(activeCards.get(22).getItem()).ordinal();
-            FORTUNE_BONUSES.put(player.getUUID(), bonus + 1);
+            int bonus = Tier.tierFromItem(activeCards.get(22).getItem()).ordinal() + 1;
+            int globalBonusLevel = CardCaseAttributeHandler.getActiveGlobalTier(player.getUUID());
+            if (globalBonusLevel == -1) {
+                FORTUNE_BONUSES.put(player.getUUID(), bonus);
+            }else {
+                FORTUNE_BONUSES.put(player.getUUID(), bonus + globalBonusLevel);
+            }
         } else {
             FORTUNE_BONUSES.remove(player.getUUID()); // Reset on drop
         }
@@ -123,8 +136,13 @@ public class CardCaseEffectHandler {
         boolean hasCard = activeCards.size() > 23 && activeCards.get(23).is(ModTags.LOOTING);
 
         if (hasCard) {
-            int bonus = Tier.fromItem(activeCards.get(23).getItem()).ordinal();
-            LOOTING_BONUSES.put(player.getUUID(), bonus + 1);
+            int bonus = Tier.tierFromItem(activeCards.get(23).getItem()).ordinal() + 1;
+            int globalBonusLevel = CardCaseAttributeHandler.getActiveGlobalTier(player.getUUID());
+            if (globalBonusLevel == -1) {
+                LOOTING_BONUSES.put(player.getUUID(), bonus);
+            }else {
+                LOOTING_BONUSES.put(player.getUUID(), bonus + globalBonusLevel);
+            }
         } else {
             LOOTING_BONUSES.remove(player.getUUID()); // Reset on drop
         }
@@ -156,10 +174,7 @@ public class CardCaseEffectHandler {
 
     // --- Parameterless Getters ---
 
-    /**
-     * Returns the Bonus for the player currently in context.
-     * Useful for Mixins where passing a PlayerEntity is difficult.
-     */
+    // Returns the Bonus for the player currently in context.
     public static float getShinyBonus() {
         UUID currentId = CURRENT_PLAYER_UUID.get();
         return SHINY_BONUSES.getOrDefault(currentId, 0f);
@@ -186,8 +201,7 @@ public class CardCaseEffectHandler {
                 activeCards.get(4).is(ModTags.REGENERATION);
 
         if (hasRegenerationCard) {
-            Tier cardTier = Tier.fromItem(activeCards.get(4).getItem());
-            int desiredAmplifier = cardTier.ordinal();
+            int desiredAmplifier = Tier.tierFromItem(activeCards.get(4).getItem()).ordinal();
 
             final MobEffectInstance REGENERATION_INSTANCE = new MobEffectInstance(
                     REGENERATION_EFFECT,
@@ -220,7 +234,6 @@ public class CardCaseEffectHandler {
      * @param activeCards List of ItemStacks retrieved from the card case.
      */
     private static void handleFireResistance(Player player, List<ItemStack> activeCards) {
-        // CHECK INDEX 19: Ensure the list is large enough, then check the card at that index.
         boolean hasFireResistanceCard = activeCards.size() > 19 &&
                 activeCards.get(19).is(ModTags.FIRE_RESISTANCE);
 
@@ -238,12 +251,11 @@ public class CardCaseEffectHandler {
     }
 
     /**
-     * Checks for the Water Breathing card at index 7 and applies or removes the effect.
+     * Checks for the Water Breathing card at index 5 and applies or removes the effect.
      * @param player The player to affect.
      * @param activeCards List of ItemStacks retrieved from the card case.
      */
     private static void handleWaterBreathing(Player player, List<ItemStack> activeCards) {
-        // CHECK INDEX 7: Ensure the list is large enough, then check the card at that index.
         boolean hasWaterBreathingCard = activeCards.size() > 5 &&
                 activeCards.get(5).is(ModTags.WATER_BREATHING);
 

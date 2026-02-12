@@ -1,6 +1,6 @@
 modLoader = "javafml"
 loaderVersion = "[1,)"
-#issueTrackerURL = "A valid URL to your issue tracker where people can open bug tickets"
+issueTrackerURL = "https://github.com/MobSmasher4000/craft-cards/issues"
 license = "All-rights-reserved"
 
 [[mods]]

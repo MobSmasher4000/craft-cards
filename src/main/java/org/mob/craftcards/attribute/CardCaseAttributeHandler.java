@@ -24,6 +24,12 @@ public class CardCaseAttributeHandler {
     // Tracks the last known Card Case stack for every player
     private static final Map<UUID, ItemStack> PLAYER_CASE_CACHE = new HashMap<>();
 
+    // Simple record to hold both values
+    public record GlobalBonusData(int tierOrdinal, double bonus) {}
+
+    // Tracks the active global bonus and tier for each player
+    private static final Map<UUID, GlobalBonusData> PLAYER_GLOBAL_BONUS_CACHE = new HashMap<>();
+
     /** Mapping from tag -> attribute + key + negative flag */
     private record AttributeMapping(
             Holder<Attribute> attribute,
@@ -105,10 +111,12 @@ public class CardCaseAttributeHandler {
         // Populate the set of all tags that contribute to the GLOBAL bonus (Excludes Size Up/Down and Speed Boost)
         ATTRIBUTE_TAGS_FOR_GLOBAL = TAG_TO_ATTRIBUTE.keySet().stream()
                 .filter(tag -> {
-                    // Exclude Scale (Size)
                     if (TAG_TO_ATTRIBUTE.get(tag).attribute() == EXCLUDED_GLOBAL_ATTRIBUTE) return false;
-                    // Exclude Speed Boost
+                    // Exclude Attribute which are in Global_exempt tag
                     if (tag.equals(ModTags.SPEED_BOOST)) return false;
+                    if (tag.equals(ModTags.SNEAK_SPEED)) return false;
+                    if (tag.equals(ModTags.JUMP_BOOST)) return false;
+                    if (tag.equals(ModTags.STEP_HEIGHT)) return false;
                     return true;
                 }).collect(Collectors.toSet());
 
@@ -125,6 +133,23 @@ public class CardCaseAttributeHandler {
     // ====================== PUBLIC API ======================
     public static void removeFromCache(UUID uuid) {
         PLAYER_CASE_CACHE.remove(uuid);
+        PLAYER_GLOBAL_BONUS_CACHE.remove(uuid);
+    }
+
+    /**
+     * Returns the active global bonus multiplier (e.g., 0.20 for 20%).
+     * Returns 0.0 if the player has no valid set.
+     */
+    public static double getActiveGlobalBonus(UUID uuid) {
+        return PLAYER_GLOBAL_BONUS_CACHE.getOrDefault(uuid, new GlobalBonusData(-1, 0.0)).bonus();
+    }
+
+    /**
+     * Returns the ordinal of the active global tier (e.g., 4 for T3).
+     * Returns -1 if the player has no valid set.
+     */
+    public static int getActiveGlobalTier(UUID uuid) {
+        return PLAYER_GLOBAL_BONUS_CACHE.getOrDefault(uuid, new GlobalBonusData(-1, 0.0)).tierOrdinal();
     }
 
     public static void updatePlayer(Player player, ItemStack currentStack){
@@ -154,6 +179,15 @@ public class CardCaseAttributeHandler {
             }
 
             double globalBonus = calculateGlobalTierBonus(attributeCardTiersForGlobal, presentAttributeTagsForGlobal);
+
+            int globalBonusLevel = -1;
+
+            if (globalBonus > 0 && !attributeCardTiersForGlobal.isEmpty()) {
+                // Get the lowest tier in the set
+                globalBonusLevel = Collections.min(attributeCardTiersForGlobal).ordinal() + 1;
+            }
+
+            PLAYER_GLOBAL_BONUS_CACHE.put(uuid,new GlobalBonusData(globalBonusLevel, globalBonus));
             applyAttributes(player, tagBonuses, globalBonus, activeAttributes);
         }
     }
@@ -175,7 +209,7 @@ public class CardCaseAttributeHandler {
 
             TagKey<Item> tag = ModTags.CARD_CASE_SLOT_TAGS[i];
             if (card.is(tag) && ATTRIBUTE_TAGS_FOR_GLOBAL.contains(tag)) {
-                tiers.add(Tier.fromItem(card.getItem()));
+                tiers.add(Tier.tierFromItem(card.getItem()));
                 presentTags.add(tag);
             }
         }
@@ -205,7 +239,7 @@ public class CardCaseAttributeHandler {
             TagKey<Item> tag = ModTags.CARD_CASE_SLOT_TAGS[i];
             if (!stack.is(tag)) continue;
 
-            Tier tier = Tier.fromItem(stack.getItem());
+            Tier tier = Tier.tierFromItem(stack.getItem());
             double bonus = tier.getBonus();
 
             tagBonuses.merge(tag, bonus, Double::sum);

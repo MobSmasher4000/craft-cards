@@ -1,0 +1,10 @@
+{
+  "values": [
+    "#craftcards:size_down",
+    "#craftcards:size_up",
+    "#craftcards:sneak_speed",
+    "#craftcards:jump_boost",
+    "#craftcards:step_height",
+    "#craftcards:speed_boost"
+  ]
+}
