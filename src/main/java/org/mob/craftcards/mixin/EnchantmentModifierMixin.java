@@ -16,10 +16,6 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(EnchantmentHelper.class)
 public class EnchantmentModifierMixin {
 
-    /**
-     * TARGET: Fortune (Block Drops)
-     * This method is called whenever a block is mined to calculate drops.
-     */
     @ModifyReturnValue(method = "getItemEnchantmentLevel", at = @At("RETURN"))
     private static int modifyFortuneEnchantLevel(int original, Holder<Enchantment> enchantment, ItemStack stack) {
 
@@ -31,13 +27,8 @@ public class EnchantmentModifierMixin {
         return original;
     }
 
-    /**
-     * TARGET: Looting (Mob Drops)
-     * This method is called whenever a mob dies to calculate drops.
-     */
     @ModifyReturnValue(method = "getEnchantmentLevel", at = @At("RETURN"))
     private static int modifyMobLootingLevel(int original,Holder<Enchantment> enchantment, LivingEntity entity) {
-        if (entity instanceof Player player) {
 
             if (enchantment.is(Enchantments.LOOTING)){
                 int bonus = CardCaseEffectHandler.getLootingBonus();
@@ -45,7 +36,7 @@ public class EnchantmentModifierMixin {
                     return original + bonus;
                 }
             }
-        }
+
         return original;
     }
 

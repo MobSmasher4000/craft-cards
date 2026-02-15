@@ -71,7 +71,6 @@ public class CardCaseItem extends Item implements ICurioItem {
         return InteractionResultHolder.success(stack);
     }
 
-    // Helper to open the menu (used by PacketHandler too)
     public static void openMenu(ServerPlayer player, ItemStack stack) {
         MenuProvider containerProvider = new SimpleMenuProvider(
                 (syncId, playerInventory, p) -> new CardCaseMenu(

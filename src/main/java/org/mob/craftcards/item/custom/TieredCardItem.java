@@ -24,7 +24,6 @@ public class TieredCardItem extends Item {
                                 List<Component> tooltip,
                                 TooltipFlag tooltipFlag) {
 
-        // Get Tier
         Tier tier = Tier.tierFromItem(stack.getItem());
 
 

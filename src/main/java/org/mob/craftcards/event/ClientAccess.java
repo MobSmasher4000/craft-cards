@@ -18,7 +18,7 @@ public class ClientAccess {
 
     /**
      * MOD BUS SUBSCRIBER
-     * Handles registration (Screens, Keys)
+     * Handles registration (Keys)
      */
     @EventBusSubscriber(modid = CraftCards.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ModEvents {

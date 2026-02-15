@@ -20,8 +20,6 @@ public class ClientTooltipHelper {
                 // Calculate percentage
                 float percent = player.getCooldowns().getCooldownPercent(item, 0.0F);
 
-                // Assuming 60 seconds (1200 ticks) is your max.
-                // ideally pass the max ticks as a parameter to this method for flexibility!
                 int presecondsLeft = (int) (percent * cooldownTicks);
                 int secondsLeft = presecondsLeft / 20;
 

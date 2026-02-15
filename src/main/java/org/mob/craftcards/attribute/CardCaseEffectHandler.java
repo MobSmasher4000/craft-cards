@@ -17,20 +17,16 @@ import java.util.*;
 
 public class CardCaseEffectHandler {
 
-    // Constants
     private static final int FULL_DURATION = 200; // 10 seconds (200 ticks)
     private static final int REFRESH_THRESHOLD = 40; // Refresh when duration is 2 seconds (40 ticks) or less
 
-    // Maps to store bonuses per player UUID
     private static final Map<UUID, Float> SHINY_BONUSES = new HashMap<>();
     private static final Map<UUID, Float> CAPTURE_BONUSES = new HashMap<>();
     private static final Map<UUID, Integer> FORTUNE_BONUSES = new HashMap<>();
     private static final Map<UUID, Integer> LOOTING_BONUSES = new HashMap<>();
 
-    // Tracks the last known Card Case stack for every player
     private static final Map<UUID, ItemStack> PLAYER_CASE_CACHE = new HashMap<>();
 
-    // The "Key" to the current player's data on this specific thread
     private static final ThreadLocal<UUID> CURRENT_PLAYER_UUID = new ThreadLocal<>();
 
     // Fire Resistance Setup
@@ -156,7 +152,7 @@ public class CardCaseEffectHandler {
             // Enable Flight if not already enabled
             if (!player.getAbilities().mayfly) {
                 player.getAbilities().mayfly = true;
-                player.onUpdateAbilities(); // Send to client
+                player.onUpdateAbilities();
             }
         } else {
             // Disable Flight ONLY if:
@@ -166,15 +162,11 @@ public class CardCaseEffectHandler {
             if (!player.isCreative() && !player.isSpectator() && player.getAbilities().mayfly) {
                 player.getAbilities().mayfly = false;
                 player.getAbilities().flying = false; // Stop them from flying instantly
-                player.onUpdateAbilities(); // Send to client
+                player.onUpdateAbilities();
             }
         }
     }
 
-
-    // --- Parameterless Getters ---
-
-    // Returns the Bonus for the player currently in context.
     public static float getShinyBonus() {
         UUID currentId = CURRENT_PLAYER_UUID.get();
         return SHINY_BONUSES.getOrDefault(currentId, 0f);
@@ -228,11 +220,6 @@ public class CardCaseEffectHandler {
         }
     }
 
-    /**
-     * Checks for the Fire Resistance card at index 19 and applies or removes the effect.
-     * @param player The player to affect.
-     * @param activeCards List of ItemStacks retrieved from the card case.
-     */
     private static void handleFireResistance(Player player, List<ItemStack> activeCards) {
         boolean hasFireResistanceCard = activeCards.size() > 19 &&
                 activeCards.get(19).is(ModTags.FIRE_RESISTANCE);
@@ -240,21 +227,16 @@ public class CardCaseEffectHandler {
         if (hasFireResistanceCard) {
             MobEffectInstance existingEffect = player.getEffect(FIRE_RESISTANCE_EFFECT);
 
-            // Apply/refresh only if the effect is not present OR if the existing duration is low (2 seconds or less).
+            // Apply/refresh.
             if (existingEffect == null || existingEffect.getDuration() <= REFRESH_THRESHOLD) {
                 player.addEffect(FIRE_RESISTANCE_INSTANCE, player);
             }
         } else {
-            // Remove the effect if the card is not present, BUT only if the effect originated from this mod.
+            // Remove the effect if the card is not present.
             removeModEffect(player, FIRE_RESISTANCE_EFFECT, FIRE_RESISTANCE_INSTANCE);
         }
     }
 
-    /**
-     * Checks for the Water Breathing card at index 5 and applies or removes the effect.
-     * @param player The player to affect.
-     * @param activeCards List of ItemStacks retrieved from the card case.
-     */
     private static void handleWaterBreathing(Player player, List<ItemStack> activeCards) {
         boolean hasWaterBreathingCard = activeCards.size() > 5 &&
                 activeCards.get(5).is(ModTags.WATER_BREATHING);
@@ -262,21 +244,16 @@ public class CardCaseEffectHandler {
         if (hasWaterBreathingCard) {
             MobEffectInstance existingEffect = player.getEffect(WATER_BREATHING_EFFECT);
 
-            // Apply/refresh only if the effect is not present OR if the existing duration is low (2 seconds or less).
+            // Apply/refresh
             if (existingEffect == null || existingEffect.getDuration() <= REFRESH_THRESHOLD) {
                 player.addEffect(WATER_BREATHING_INSTANCE);
             }
         } else {
-            // Remove the effect if the card is not present, BUT only if the effect originated from this mod.
+            // Remove the effect if the card is not present.
             removeModEffect(player, WATER_BREATHING_EFFECT, WATER_BREATHING_INSTANCE);
         }
     }
 
-
-    /**
-     * Helper to safely remove a status effect applied by the mod.
-     * It checks for matching amplifier and ambient flag to avoid removing effects from other sources.
-     */
     private static void removeModEffect(Player player, Holder<MobEffect> effect, MobEffectInstance modInstance) {
         if (player.hasEffect(effect)) {
             MobEffectInstance existingEffect = player.getEffect(effect);
@@ -299,18 +276,14 @@ public class CardCaseEffectHandler {
     private static List<ItemStack> getCardsInCase(ItemStack cardCaseStack) {
 
         if (cardCaseStack.isEmpty()) {
-            // Return an empty list if no case is found
             return List.of();
         }
 
-        // 2. Extract the ItemContainerContents from the cardCaseStack using DataComponents.CONTAINER.
         ItemContainerContents container = cardCaseStack.get(DataComponents.CONTAINER);
         if (container == null) {
-            // Return empty list if component is missing or null
             return List.of();
         }
 
-        // 3. Copy contents to a NonNullList of size 24 to enforce slot mapping.
         NonNullList<ItemStack> internal = NonNullList.withSize(CraftCards.CASE_SIZE, ItemStack.EMPTY);
         container.copyInto(internal);
 

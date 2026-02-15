@@ -29,7 +29,6 @@ public class CraftCards {
         Attributes.init();
         ModLootModifiers.register(modBus);
 
-        // 3. Register Networking
         modBus.addListener(PacketHandler::register);
     }
 

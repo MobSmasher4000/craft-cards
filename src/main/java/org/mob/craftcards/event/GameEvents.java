@@ -12,7 +12,6 @@ public class GameEvents {
 
     @SubscribeEvent
     public static void onPlayerLogout(PlayerEvent.PlayerLoggedOutEvent event) {
-        // Handle cache cleanup
         CardCaseAttributeHandler.removeFromCache(event.getEntity().getUUID());
         CardCaseEffectHandler.removeFromCache(event.getEntity().getUUID());
     }

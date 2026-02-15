@@ -24,7 +24,6 @@ public class CardCaseAttributeHandler {
     // Tracks the last known Card Case stack for every player
     private static final Map<UUID, ItemStack> PLAYER_CASE_CACHE = new HashMap<>();
 
-    // Simple record to hold both values
     public record GlobalBonusData(int tierOrdinal, double bonus) {}
 
     // Tracks the active global bonus and tier for each player
@@ -48,12 +47,10 @@ public class CardCaseAttributeHandler {
     // Map the minimum tier required for the global bonus to the bonus percentage
     private static final Map<Tier, Double> SAME_TIER_BONUSES = new HashMap<>();
 
-    // The unique ID for the global bonus modifier
     private static final ResourceLocation GLOBAL_BONUS_ID = ResourceLocation.fromNamespaceAndPath(CraftCards.MOD_ID, "cardcase_global_tier_bonus");
 
 
     static {
-        // =============== ATTRIBUTE-MAPPED STATS ===============
         // Armor & toughness
         TAG_TO_ATTRIBUTE.put(ModTags.ARMOR,
                 new AttributeMapping(Attributes.ARMOR, "armor", false));
@@ -76,7 +73,7 @@ public class CardCaseAttributeHandler {
         TAG_TO_ATTRIBUTE.put(ModTags.SIZE_UP,
                 new AttributeMapping(EXCLUDED_GLOBAL_ATTRIBUTE, "size_up", false));
         TAG_TO_ATTRIBUTE.put(ModTags.SIZE_DOWN,
-                new AttributeMapping(EXCLUDED_GLOBAL_ATTRIBUTE, "size_down", true)); // NEGATIVE
+                new AttributeMapping(EXCLUDED_GLOBAL_ATTRIBUTE, "size_down", true));
 
         // Health Boost
         TAG_TO_ATTRIBUTE.put(ModTags.HEALTH_BOOST,
@@ -108,7 +105,7 @@ public class CardCaseAttributeHandler {
         TAG_TO_ATTRIBUTE.put(ModTags.JUMP_BOOST,
                 new AttributeMapping(Attributes.JUMP_STRENGTH, "jump_strength", false));
 
-        // Populate the set of all tags that contribute to the GLOBAL bonus (Excludes Size Up/Down and Speed Boost)
+        // Populate the set of all tags that contribute to the GLOBAL bonus
         ATTRIBUTE_TAGS_FOR_GLOBAL = TAG_TO_ATTRIBUTE.keySet().stream()
                 .filter(tag -> {
                     if (TAG_TO_ATTRIBUTE.get(tag).attribute() == EXCLUDED_GLOBAL_ATTRIBUTE) return false;
@@ -158,12 +155,11 @@ public class CardCaseAttributeHandler {
         UUID uuid = player.getUUID();
         ItemStack lastStack = PLAYER_CASE_CACHE.getOrDefault(uuid, ItemStack.EMPTY);
 
-        // 1. If both are empty, do nothing
         if (currentStack.isEmpty() && lastStack.isEmpty()) {
             return;
         }
 
-        // 2. Detect if the item was removed or changed
+        // Detect if the item was removed or changed
         if (!ItemStack.matches(currentStack, lastStack)) {
 
             Map<TagKey<Item>, Double> tagBonuses = new HashMap<>();
@@ -192,7 +188,7 @@ public class CardCaseAttributeHandler {
         }
     }
 
-    // this method calc global bonus for tooltip
+    // Tooltip Calculation
     public static double calculateBonusFromStack(ItemStack stack) {
         ItemContainerContents container = stack.get(DataComponents.CONTAINER);
         if (container == null) return 0.0;
@@ -282,7 +278,7 @@ public class CardCaseAttributeHandler {
                                         double globalBonus,
                                         Set<Holder<Attribute>> activeAttributes) {
 
-        // --- PART 1: APPLY AND CLEAN INDIVIDUAL TAG BONUSES ---
+        // --- APPLY AND CLEAN INDIVIDUAL TAG BONUSES ---
         for (var tagEntry : TAG_TO_ATTRIBUTE.entrySet()) {
             TagKey<Item> tag = tagEntry.getKey();
             AttributeMapping mapping = tagEntry.getValue();
@@ -317,13 +313,13 @@ public class CardCaseAttributeHandler {
             }
         }
 
-        // --- PART 2: GLOBAL SAME-TIER BONUS CLEANUP AND RE-APPLICATION ---
+        // --- GLOBAL SAME-TIER BONUS CLEANUP AND RE-APPLICATION ---
 
         Set<Holder<Attribute>> allPossibleAttributes = TAG_TO_ATTRIBUTE.values().stream()
                 .map(AttributeMapping::attribute)
                 .collect(Collectors.toSet());
 
-        // 1. CLEANUP
+        // CLEANUP
         for (Holder<Attribute> attribute : allPossibleAttributes) {
             AttributeInstance instance = player.getAttribute(attribute);
             if (instance == null) continue;
@@ -333,7 +329,7 @@ public class CardCaseAttributeHandler {
             }
         }
 
-        // 2. RE-APPLY
+        // RE-APPLY
         if (globalBonus != 0.0) {
             for (Holder<Attribute> attribute : activeAttributes) {
 

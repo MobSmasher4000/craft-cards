@@ -13,25 +13,20 @@ import org.mob.craftcards.CraftCards;
 import java.util.List;
 
 public class ModItemGroups {
-
-    // 1. Create the DeferredRegister for Creative Tabs
     public static final DeferredRegister<CreativeModeTab> REGISTRY =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CraftCards.MOD_ID);
 
-    // 2. Register the Tab
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CRAFTCARDS_GROUP = REGISTRY.register("craftcards_group", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.craftcards.craftcards_group"))
             .icon(() -> new ItemStack(ModItems.CARD_CASE.get()))
             .displayItems((parameters, output) -> {
 
-                // Add single items
                 output.accept(ModItems.CARD_CASE.get());
                 output.accept(ModItems.BOOSTER_PACK.get());
                 output.accept(ModItems.FLIGHT.get());
                 output.accept(ModItems.FIRE_RESISTANCE.get());
                 output.accept(ModItems.WATER_BREATHING.get());
 
-                // Add lists of items using the helper
                 addAll(output, ModItems.ARMOR);
                 addAll(output, ModItems.ARMOR_TOUGHNESS);
                 addAll(output, ModItems.HEALTH_BOOST);
@@ -62,7 +57,6 @@ public class ModItemGroups {
             })
             .build());
 
-    // Helper method
     private static void addAll(CreativeModeTab.Output output, List<? extends ItemLike> items) {
         for (ItemLike item : items) {
             output.accept(item);

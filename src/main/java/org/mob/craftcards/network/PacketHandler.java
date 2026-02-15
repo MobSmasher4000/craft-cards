@@ -29,7 +29,6 @@ public class PacketHandler {
                         .findCurio(player, "cardcase", 0);
 
                 if (curioStack.isPresent()) {
-                    // Open the menu using the helper method we made in Step 2
                     CardCaseItem.openMenu(player, curioStack.get().stack());
                 }
             }

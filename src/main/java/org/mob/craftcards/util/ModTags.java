@@ -65,11 +65,11 @@ public class ModTags {
             SNEAK_SPEED,
             // 12. Step Height
             STEP_HEIGHT,
-            // 13. Block Reach Distance Card (Mapped to BLOCK_INTERACTION_RANGE)
+            // 13. Block Reach Card
             BLOCK_INTERACTION_RANGE,
-            // 14. Entity Reach Distance Card (Mapped to ENTITY_INTERACTION_RANGE)
+            // 14. Entity Reach Card
             ENTITY_INTERACTION_RANGE,
-            // 15. Movement Speed Card (Mapped to SPEED_BOOST)
+            // 15. Movement Speed Card
             SPEED_BOOST,
             // 16. Jump Boost Card
             JUMP_BOOST,

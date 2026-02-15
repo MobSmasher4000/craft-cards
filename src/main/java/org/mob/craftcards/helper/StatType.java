@@ -23,7 +23,7 @@ public enum StatType {
     STEP_HEIGHT("step_height"),
     UNDERWATER_MINING_SPEED("underwater_mining_speed");
 
-    private final String baseName; // used in item id & texture folder
+    private final String baseName;
 
     StatType(String baseName) {
         this.baseName = baseName;
