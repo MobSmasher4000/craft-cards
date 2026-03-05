@@ -7,7 +7,7 @@ plugins {
 
 
 group = "org.mob.craftcards"
-version = "1.21.1-1.3"
+version = "1.21.1-1.4"
 
 architectury {
     platformSetupLoomIde()

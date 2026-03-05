@@ -14,6 +14,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
 import org.mob.craftcards.CraftCards;
+import org.mob.craftcards.CraftCardsConfig;
 import org.mob.craftcards.helper.Tier;
 import org.mob.craftcards.util.ModTags;
 
@@ -43,9 +44,6 @@ public class CardCaseAttributeHandler {
 
     // The attribute that is explicitly excluded from receiving the global bonus.
     private static final Holder<Attribute> EXCLUDED_GLOBAL_ATTRIBUTE = Attributes.SCALE;
-
-    // Map the minimum tier required for the global bonus to the bonus percentage
-    private static final Map<Tier, Double> SAME_TIER_BONUSES = new HashMap<>();
 
     private static final ResourceLocation GLOBAL_BONUS_ID = ResourceLocation.fromNamespaceAndPath(CraftCards.MOD_ID, "cardcase_global_tier_bonus");
 
@@ -116,15 +114,18 @@ public class CardCaseAttributeHandler {
                     if (tag.equals(ModTags.STEP_HEIGHT)) return false;
                     return true;
                 }).collect(Collectors.toSet());
+    }
 
-        // Same Tier Bonus map
-        SAME_TIER_BONUSES.put(Tier.T0, 0.02); // 2%
-        SAME_TIER_BONUSES.put(Tier.T1, 0.05); // 5%
-        SAME_TIER_BONUSES.put(Tier.T2, 0.10); // 10%
-        SAME_TIER_BONUSES.put(Tier.T3, 0.20); // 20%
-        SAME_TIER_BONUSES.put(Tier.T4, 0.30); // 30%
-        SAME_TIER_BONUSES.put(Tier.T5, 0.40); // 40%
-        SAME_TIER_BONUSES.put(Tier.T6, 0.50); // 50%
+    private static double getBonusFromConfig(Tier tier) {
+        return switch (tier) {
+            case T0 -> CraftCardsConfig.TIER_0_GLOBAL.get();
+            case T1 -> CraftCardsConfig.TIER_1_GLOBAL.get();
+            case T2 -> CraftCardsConfig.TIER_2_GLOBAL.get();
+            case T3 -> CraftCardsConfig.TIER_3_GLOBAL.get();
+            case T4 -> CraftCardsConfig.TIER_4_GLOBAL.get();
+            case T5 -> CraftCardsConfig.TIER_5_GLOBAL.get();
+            case T6 -> CraftCardsConfig.TIER_6_GLOBAL.get();
+        };
     }
 
     // ====================== PUBLIC API ======================
@@ -270,7 +271,7 @@ public class CardCaseAttributeHandler {
             return 0.0;
         }
 
-        return SAME_TIER_BONUSES.getOrDefault(minTier, 0.0);
+        return getBonusFromConfig(minTier);
     }
 
     private static void applyAttributes(Player player,

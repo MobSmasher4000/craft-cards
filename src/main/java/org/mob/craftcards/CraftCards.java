@@ -3,8 +3,10 @@ package org.mob.craftcards;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.mob.craftcards.attribute.Attributes;
@@ -21,7 +23,7 @@ public class CraftCards {
     public static final String MOD_ID = "craftcards";
     public static final int CASE_SIZE = 25;
 
-    public CraftCards(IEventBus modBus) {
+    public CraftCards(IEventBus modBus, ModContainer modContainer) {
         ModItems.register(modBus);
         ModItemGroups.register(modBus);
         ModMenuTypes.register(modBus);
@@ -29,6 +31,7 @@ public class CraftCards {
         Attributes.init();
         ModLootModifiers.register(modBus);
 
+        modContainer.registerConfig(ModConfig.Type.SERVER, CraftCardsConfig.SPEC);
         modBus.addListener(PacketHandler::register);
     }
 

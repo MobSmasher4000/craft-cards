@@ -2,6 +2,7 @@ package org.mob.craftcards.attribute;
 
 import com.cobblemon.mod.common.api.Priority;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
+import com.cobblemon.mod.common.api.pokeball.catching.CaptureContext;
 
 public class Attributes {
 
@@ -14,6 +15,10 @@ public class Attributes {
                 pokemonCatchRateEvent.setCatchRate(rate);
             }
         });
+
+//        CobblemonEvents.POKE_BALL_CAPTURE_CALCULATED.subscribe(Priority.LOWEST,pokeBallCaptureCalculatedEvent -> {
+//            pokeBallCaptureCalculatedEvent.setCaptureResult(new CaptureContext(4, true, true));
+//        });
     }
 
 }
