@@ -23,15 +23,23 @@ public class TieredCardItem extends Item {
                               List<Text> tooltip,
                               TooltipType type) {
         // Figure out which tier this item is
-        Tier tier = Tier.fromItem(stack.getItem());
+        Tier tier = Tier.tierFromItem(stack.getItem());
 
         if (stack.isIn(ModTags.REGENERATION)){
+            int effectAmp = Tier.tierFromItem(stack.getItem()).ordinal() + 1;
+            tooltip.add(Text.translatable("tooltip.craftcards.regeneration",effectAmp).formatted(Formatting.AQUA));
             return;
         }
-        if (stack.isIn(ModTags.LOOTING)){
-            return;
-        }
+
         if (stack.isIn(ModTags.FORTUNE)){
+            int levelAmp = Tier.tierFromItem(stack.getItem()).ordinal() + 1;
+            tooltip.add(Text.translatable("tooltip.craftcards.fortune", levelAmp).formatted(Formatting.AQUA));
+            return;
+        }
+
+        if (stack.isIn(ModTags.LOOTING)){
+            int levelAmp = Tier.tierFromItem(stack.getItem()).ordinal() + 1;
+            tooltip.add(Text.translatable("tooltip.craftcards.looting", levelAmp).formatted(Formatting.AQUA));
             return;
         }
 

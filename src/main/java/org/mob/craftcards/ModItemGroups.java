@@ -22,6 +22,7 @@ public class ModItemGroups {
                     .entries((context, entries) -> {
 
                         entries.add(ModItems.CARD_CASE);
+                        entries.add(ModItems.BOOSTER_PACK);
                         entries.add(ModItems.FIRE_RESISTANCE);
                         entries.add(ModItems.WATER_BREATHING);
 

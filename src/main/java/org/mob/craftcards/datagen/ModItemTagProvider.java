@@ -25,7 +25,33 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ModTags.WATER_BREATHING)
                 .add(ModItems.WATER_BREATHING);
 
-        getOrCreateTagBuilder(AccessoriesTags.BELT_TAG)
+        getOrCreateTagBuilder(ModTags.LOOT_CARD_ITEMS)
+                .add(ModItems.ARMOR.getFirst())
+                .add(ModItems.ARMOR_TOUGHNESS.getFirst())
+                .add(ModItems.ATTACK_SPEED.getFirst())
+                .add(ModItems.BLOCK_INTERACTION_RANGE.getFirst())
+                .add(ModItems.CAPTURE_RATE.getFirst())
+                .add(ModItems.DAMAGE.getFirst())
+                .add(ModItems.ENTITY_INTERACTION_RANGE.getFirst())
+                .add(ModItems.FEATHER_FALLING.getFirst())
+                .add(ModItems.FIRE_RESISTANCE)
+                .add(ModItems.FORTUNE.getFirst())
+                .add(ModItems.HEALTH_BOOST.getFirst())
+                .add(ModItems.JUMP_BOOST.getFirst())
+                .add(ModItems.LOOTING.getFirst())
+                .add(ModItems.LUCK_BOOST.getFirst())
+                .add(ModItems.MINING_SPEED.getFirst())
+                .add(ModItems.REGENERATION.getFirst())
+                .add(ModItems.SHINY_RATE.getFirst())
+                .add(ModItems.SIZE_DOWN.getFirst())
+                .add(ModItems.SIZE_UP.getFirst())
+                .add(ModItems.SNEAK_SPEED.getFirst())
+                .add(ModItems.SPEED_BOOST.getFirst())
+                .add(ModItems.STEP_HEIGHT.getFirst())
+                .add(ModItems.UNDERWATER_MINING_SPEED.getFirst())
+                .add(ModItems.WATER_BREATHING);
+
+        getOrCreateTagBuilder(ModTags.CARD_CASE)
                 .add(ModItems.CARD_CASE);
 
         // Per-stat tags – each gets all its tiered card items

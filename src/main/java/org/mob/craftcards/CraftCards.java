@@ -19,6 +19,7 @@ import org.mob.craftcards.attribute.CardCaseEffectHandler;
 import org.mob.craftcards.component.ModDataComponentTypes;
 import org.mob.craftcards.item.ModItems;
 import org.mob.craftcards.item.custom.CardCaseItem;
+import org.mob.craftcards.loot.ModLootTableModifiers;
 import org.mob.craftcards.network.OpenCardCasePayload;
 import org.mob.craftcards.screen.CardCaseScreenHandler;
 import org.mob.craftcards.screen.ModScreenHandlers;
@@ -34,11 +35,13 @@ public class CraftCards implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+        CraftCardsConfig.load();
         ModItems.registerAll();
         ModItemGroups.register();
         ModScreenHandlers.register();
         ModDataComponentTypes.registerDataComponentTypes();
         Attributes.init();
+        ModLootTableModifiers.modifyLootTables();
 
         PayloadTypeRegistry.playC2S().register(OpenCardCasePayload.ID, OpenCardCasePayload.CODEC);
 
@@ -75,8 +78,7 @@ public class CraftCards implements ModInitializer {
                 var capability = AccessoriesCapability.get(player);
                 if (capability != null) {
 
-                    // Look for the Card Case specifically in the "belt" slot
-                    // (Or use a general check if it can be equipped anywhere)
+                    // Look for the Card Case
                     var equipped = capability.getEquipped(stack -> stack.getItem() instanceof CardCaseItem);
 
                     if (!equipped.isEmpty()) {

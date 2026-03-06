@@ -1,0 +1,6 @@
+{
+  "order": 100,
+  "icon": "craftcards:gui/slot/empty_cardcase_slot",
+  "amount": 1,
+  "drop_rule": "default"
+}

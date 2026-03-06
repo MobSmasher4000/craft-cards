@@ -1,6 +1,7 @@
 package org.mob.craftcards.attribute;
 
 import org.mob.craftcards.CraftCards;
+import org.mob.craftcards.CraftCardsConfig;
 import org.mob.craftcards.util.ModTags;
 import org.mob.craftcards.helper.Tier;
 
@@ -35,14 +36,16 @@ public class CardCaseAttributeHandler {
     private static final Map<TagKey<Item>, AttributeMapping> TAG_TO_ATTRIBUTE = new HashMap<>();
 
     // A set of all tags that contribute to the Global Same-Tier Bonus check.
-    // This is the set of all attribute tags MINUS SIZE_UP and SIZE_DOWN.
     private static final Set<TagKey<Item>> ATTRIBUTE_TAGS_FOR_GLOBAL;
 
     // The attribute that is explicitly excluded from receiving the global bonus.
     private static final RegistryEntry<EntityAttribute> EXCLUDED_GLOBAL_ATTRIBUTE = EntityAttributes.GENERIC_SCALE;
 
-    // Map the minimum tier required for the global bonus to the bonus percentage
-    private static final Map<Tier, Double> SAME_TIER_BONUSES = new HashMap<>();
+    // Simple record to hold both values
+    public record GlobalBonusData(int tierOrdinal, double bonus) {}
+
+    // Tracks the active global bonus and tier for each player
+    private static final Map<UUID, GlobalBonusData> PLAYER_GLOBAL_BONUS_CACHE = new HashMap<>();
 
     // The unique ID for the global bonus modifier
     private static final Identifier GLOBAL_BONUS_ID = Identifier.of(CraftCards.MOD_ID, "cardcase_global_tier_bonus");
@@ -107,22 +110,50 @@ public class CardCaseAttributeHandler {
 
         // Populate the set of all tags that contribute to the GLOBAL bonus (Excludes Size Up/Down)
         ATTRIBUTE_TAGS_FOR_GLOBAL = TAG_TO_ATTRIBUTE.keySet().stream()
-                .filter(tag -> TAG_TO_ATTRIBUTE.get(tag).attribute() != EXCLUDED_GLOBAL_ATTRIBUTE)
-                .collect(Collectors.toSet());
+                .filter(tag -> {
+                    // Exclude Scale (Size)
+                    if (TAG_TO_ATTRIBUTE.get(tag).attribute() == EXCLUDED_GLOBAL_ATTRIBUTE) return false;
+                    if (tag.equals(ModTags.SPEED_BOOST)) return false;
+                    if (tag.equals(ModTags.SNEAK_SPEED)) return false;
+                    if (tag.equals(ModTags.JUMP_BOOST)) return false;
+                    if (tag.equals(ModTags.STEP_HEIGHT)) return false;
+                    return true;
+                }).collect(Collectors.toSet());
 
-        // Populate the Same Tier Bonus map
-        SAME_TIER_BONUSES.put(Tier.T0, 0.02); // 2%
-        SAME_TIER_BONUSES.put(Tier.T1, 0.05); // 5%
-        SAME_TIER_BONUSES.put(Tier.T2, 0.10); // 10%
-        SAME_TIER_BONUSES.put(Tier.T3, 0.20); // 20%
-        SAME_TIER_BONUSES.put(Tier.T4, 0.30); // 30%
-        SAME_TIER_BONUSES.put(Tier.T5, 0.40); // 40%
-        SAME_TIER_BONUSES.put(Tier.T6, 0.50); // 50%
+    }
+
+    private static double getBonusFromConfig(Tier tier) {
+        return switch (tier) {
+            case T0 -> CraftCardsConfig.INSTANCE.globalTierBonuses.tier0_global;
+            case T1 -> CraftCardsConfig.INSTANCE.globalTierBonuses.tier1_global;
+            case T2 -> CraftCardsConfig.INSTANCE.globalTierBonuses.tier2_global;
+            case T3 -> CraftCardsConfig.INSTANCE.globalTierBonuses.tier3_global;
+            case T4 -> CraftCardsConfig.INSTANCE.globalTierBonuses.tier4_global;
+            case T5 -> CraftCardsConfig.INSTANCE.globalTierBonuses.tier5_global;
+            case T6 -> CraftCardsConfig.INSTANCE.globalTierBonuses.tier6_global;
+        };
     }
 
     // ====================== PUBLIC API ======================
     public static void removeFromCache(UUID uuid) {
         PLAYER_CASE_CACHE.remove(uuid);
+        PLAYER_GLOBAL_BONUS_CACHE.remove(uuid);
+    }
+
+    /**
+     * Returns the active global bonus multiplier (e.g., 0.20 for 20%).
+     * Returns 0.0 if the player has no valid set.
+     */
+    public static double getActiveGlobalBonus(UUID uuid) {
+        return PLAYER_GLOBAL_BONUS_CACHE.getOrDefault(uuid, new GlobalBonusData(-1, 0.0)).bonus();
+    }
+
+    /**
+     * Returns the ordinal of the active global tier (e.g., 4 for T3).
+     * Returns -1 if the player has no valid set.
+     */
+    public static int getActiveGlobalTier(UUID uuid) {
+        return PLAYER_GLOBAL_BONUS_CACHE.getOrDefault(uuid, new GlobalBonusData(-1, 0.0)).tierOrdinal();
     }
 
     public static void updatePlayer(PlayerEntity player, ItemStack currentStack){
@@ -155,6 +186,15 @@ public class CardCaseAttributeHandler {
 
             double globalBonus = calculateGlobalTierBonus(attributeCardTiersForGlobal, presentAttributeTagsForGlobal);
 
+            int globalBonusLevel = -1;
+
+            if (globalBonus > 0 && !attributeCardTiersForGlobal.isEmpty()) {
+                // Get the lowest tier in the set
+                globalBonusLevel = Collections.min(attributeCardTiersForGlobal).ordinal() + 1;
+            }
+
+            PLAYER_GLOBAL_BONUS_CACHE.put(uuid,new GlobalBonusData(globalBonusLevel, globalBonus));
+
             // This cleans old modifiers and applies new ones (or none if currentStack is empty)
             applyAttributes(player, tagBonuses, globalBonus, activeAttributes);
         }
@@ -178,7 +218,7 @@ public class CardCaseAttributeHandler {
 
             TagKey<Item> tag = ModTags.CARD_CASE_SLOT_TAGS[i];
             if (card.isIn(tag) && ATTRIBUTE_TAGS_FOR_GLOBAL.contains(tag)) {
-                tiers.add(Tier.fromItem(card.getItem()));
+                tiers.add(Tier.tierFromItem(card.getItem()));
                 presentTags.add(tag);
             }
         }
@@ -219,7 +259,7 @@ public class CardCaseAttributeHandler {
             TagKey<Item> tag = ModTags.CARD_CASE_SLOT_TAGS[i];
             if (!stack.isIn(tag)) continue;
 
-            Tier tier = Tier.fromItem(stack.getItem());
+            Tier tier = Tier.tierFromItem(stack.getItem());
             double bonus = tier.getBonus();
 
             tagBonuses.merge(tag, bonus, Double::sum);
@@ -263,7 +303,7 @@ public class CardCaseAttributeHandler {
         }
 
         // 3. The bonus is based on the lowest tier found
-        return SAME_TIER_BONUSES.getOrDefault(minTier, 0.0);
+        return getBonusFromConfig(minTier);
     }
 
     /**

@@ -1,11 +1,24 @@
 {
   "itemGroup.craftcards.craftcards_group": "Craft Cards",
+  "accessories.slot.cardcase": "Card Case",
 
   "tooltip.craftcards.open_key": "Press [%s] to open while equipped",
   "key.craftcards.open_case": "Open Equipped Card Case",
   "category.craftcards.general": "Craft Cards",
 
   "tooltip.craftcards.global_bonus": "★ SET BONUS: +%d%% ALL STATS ★",
+
+  "tooltip.craftcards.booster_pack_desc": "Right-click to open!",
+  "tooltip.craftcards.booster_pack_uses": "Uses Remaining: %s",
+  "tooltip.craftcards.booster_pack_cooldown": "Cooldown: %ss",
+  "tooltip.craftcards.cooldown_active": "Cooldown: %ss (Wait)",
+  "tooltip.craftcards.cooldown_ready": "Cooldown: %ss (Ready)",
+  "item.craftcards.booster_pack": "Booster Card Pack",
+
+  "tooltip.craftcards.regeneration": "Regeneration %s Effect",
+  "tooltip.craftcards.fortune": "Fortune +%s Level",
+  "tooltip.craftcards.looting": "Looting +%s Level",
+  "tooltip.craftcards.fire_water_effect": "Effect is there even when you can't see the icon",
 
   "item.craftcards.card_case": "Card Case",
 
@@ -32,22 +45,6 @@
   "item.craftcards.attack_speed_tier4": "Attack Speed 5",
   "item.craftcards.attack_speed_tier5": "Attack Speed 6",
   "item.craftcards.attack_speed_tier6": "Attack Speed 7",
-
-  "item.craftcards.blast_resistance_tier0": "Blast Resistance 1",
-  "item.craftcards.blast_resistance_tier1": "Blast Resistance 2",
-  "item.craftcards.blast_resistance_tier2": "Blast Resistance 3",
-  "item.craftcards.blast_resistance_tier3": "Blast Resistance 4",
-  "item.craftcards.blast_resistance_tier4": "Blast Resistance 5",
-  "item.craftcards.blast_resistance_tier5": "Blast Resistance 6",
-  "item.craftcards.blast_resistance_tier6": "Blast Resistance 7",
-
-  "item.craftcards.block_chance_tier0": "Block Chance 1",
-  "item.craftcards.block_chance_tier1": "Block Chance 2",
-  "item.craftcards.block_chance_tier2": "Block Chance 3",
-  "item.craftcards.block_chance_tier3": "Block Chance 4",
-  "item.craftcards.block_chance_tier4": "Block Chance 5",
-  "item.craftcards.block_chance_tier5": "Block Chance 6",
-  "item.craftcards.block_chance_tier6": "Block Chance 7",
 
   "item.craftcards.block_interaction_range_tier0": "Block Interaction Range 1",
   "item.craftcards.block_interaction_range_tier1": "Block Interaction Range 2",
@@ -90,22 +87,6 @@
   "item.craftcards.feather_falling_tier6": "Feather Falling 7",
 
   "item.craftcards.fire_resistance": "Fire Resistance",
-
-  "item.craftcards.fishing_efficiency_tier0": "Fishing Efficiency 1",
-  "item.craftcards.fishing_efficiency_tier1": "Fishing Efficiency 2",
-  "item.craftcards.fishing_efficiency_tier2": "Fishing Efficiency 3",
-  "item.craftcards.fishing_efficiency_tier3": "Fishing Efficiency 4",
-  "item.craftcards.fishing_efficiency_tier4": "Fishing Efficiency 5",
-  "item.craftcards.fishing_efficiency_tier5": "Fishing Efficiency 6",
-  "item.craftcards.fishing_efficiency_tier6": "Fishing Efficiency 7",
-
-  "item.craftcards.flying_speed_tier0": "Flying Speed 1",
-  "item.craftcards.flying_speed_tier1": "Flying Speed 2",
-  "item.craftcards.flying_speed_tier2": "Flying Speed 3",
-  "item.craftcards.flying_speed_tier3": "Flying Speed 4",
-  "item.craftcards.flying_speed_tier4": "Flying Speed 5",
-  "item.craftcards.flying_speed_tier5": "Flying Speed 6",
-  "item.craftcards.flying_speed_tier6": "Flying Speed 7",
 
   "item.craftcards.fortune_tier0": "Fortune 1",
   "item.craftcards.fortune_tier1": "Fortune 2",
@@ -154,14 +135,6 @@
   "item.craftcards.mining_speed_tier4": "Mining Speed 5",
   "item.craftcards.mining_speed_tier5": "Mining Speed 6",
   "item.craftcards.mining_speed_tier6": "Mining Speed 7",
-
-  "item.craftcards.projectile_resistance_tier0": "Projectile Resistance 1",
-  "item.craftcards.projectile_resistance_tier1": "Projectile Resistance 2",
-  "item.craftcards.projectile_resistance_tier2": "Projectile Resistance 3",
-  "item.craftcards.projectile_resistance_tier3": "Projectile Resistance 4",
-  "item.craftcards.projectile_resistance_tier4": "Projectile Resistance 5",
-  "item.craftcards.projectile_resistance_tier5": "Projectile Resistance 6",
-  "item.craftcards.projectile_resistance_tier6": "Projectile Resistance 7",
 
   "item.craftcards.regeneration_tier0": "Regeneration 1",
   "item.craftcards.regeneration_tier1": "Regeneration 2",
@@ -227,13 +200,5 @@
   "item.craftcards.underwater_mining_speed_tier5": "Underwater Mining Speed 6",
   "item.craftcards.underwater_mining_speed_tier6": "Underwater Mining Speed 7",
 
-  "item.craftcards.water_breathing": "Water Breathing",
-
-  "item.craftcards.underwater_movement_speed_tier0": "Water Movement Speed 1",
-  "item.craftcards.underwater_movement_speed_tier1": "Water Movement Speed 2",
-  "item.craftcards.underwater_movement_speed_tier2": "Water Movement Speed 3",
-  "item.craftcards.underwater_movement_speed_tier3": "Water Movement_speed 4",
-  "item.craftcards.underwater_movement_speed_tier4": "Water Movement_speed 5",
-  "item.craftcards.underwater_movement_speed_tier5": "Water Movement_speed 6",
-  "item.craftcards.underwater_movement_speed_tier6": "Water Movement_speed 7"
+  "item.craftcards.water_breathing": "Water Breathing"
 }

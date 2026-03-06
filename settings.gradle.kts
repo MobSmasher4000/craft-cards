@@ -1,4 +1,4 @@
-rootProject.name = "Craft Cards" //By default, this is how your built jar is called
+rootProject.name = "Craft Cards Fabric" //By default, this is how your built jar is called
 
 pluginManagement {
     repositories {

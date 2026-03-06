@@ -1,19 +1,15 @@
 package org.mob.craftcards.attribute;
 
 import net.minecraft.component.type.ContainerComponent;
-import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.collection.DefaultedList;
 import org.mob.craftcards.CraftCards;
 import org.mob.craftcards.helper.Tier;
-import org.mob.craftcards.item.ModItems;
 import org.mob.craftcards.util.ModTags;
 import net.minecraft.component.DataComponentTypes;
 
@@ -93,8 +89,9 @@ public class CardCaseEffectHandler {
         boolean hasCard = activeCards.size() > 20 && activeCards.get(20).isIn(ModTags.SHINY_RATE);
 
         if (hasCard) {
-            float bonus = Tier.fromItem(activeCards.get(20).getItem()).getBonus();
-            SHINY_BONUSES.put(player.getUuid(), bonus);
+            float bonus = Tier.tierFromItem(activeCards.get(20).getItem()).getBonus();
+            float globalBonus = (float) CardCaseAttributeHandler.getActiveGlobalBonus(player.getUuid());
+            SHINY_BONUSES.put(player.getUuid(), bonus + globalBonus);
         } else {
             SHINY_BONUSES.remove(player.getUuid()); // Reset on drop
         }
@@ -104,8 +101,9 @@ public class CardCaseEffectHandler {
         boolean hasCard = activeCards.size() > 21 && activeCards.get(21).isIn(ModTags.CAPTURE_RATE);
 
         if (hasCard) {
-            float bonus = Tier.fromItem(activeCards.get(21).getItem()).getBonus();
-            CAPTURE_BONUSES.put(player.getUuid(), bonus);
+            float bonus = Tier.tierFromItem(activeCards.get(21).getItem()).getBonus();
+            float globalBonus = (float) CardCaseAttributeHandler.getActiveGlobalBonus(player.getUuid());
+            CAPTURE_BONUSES.put(player.getUuid(), bonus + globalBonus);
         } else {
             CAPTURE_BONUSES.remove(player.getUuid()); // Reset on drop
         }
@@ -115,8 +113,13 @@ public class CardCaseEffectHandler {
         boolean hasCard = activeCards.size() > 22 && activeCards.get(22).isIn(ModTags.FORTUNE);
 
         if (hasCard) {
-            int bonus = Tier.fromItem(activeCards.get(22).getItem()).ordinal();
-            FORTUNE_BONUSES.put(player.getUuid(), bonus+1);
+            int bonus = Tier.tierFromItem(activeCards.get(22).getItem()).ordinal() + 1;
+            int globalBonusLevel = CardCaseAttributeHandler.getActiveGlobalTier(player.getUuid());
+            if (globalBonusLevel == -1) {
+                FORTUNE_BONUSES.put(player.getUuid(), bonus);
+            }else {
+                FORTUNE_BONUSES.put(player.getUuid(), bonus + globalBonusLevel);
+            }
         } else {
             FORTUNE_BONUSES.remove(player.getUuid()); // Reset on drop
         }
@@ -126,8 +129,13 @@ public class CardCaseEffectHandler {
         boolean hasCard = activeCards.size() > 23 && activeCards.get(23).isIn(ModTags.LOOTING);
 
         if (hasCard) {
-            int bonus = Tier.fromItem(activeCards.get(23).getItem()).ordinal();
-            LOOTING_BONUSES.put(player.getUuid(), bonus+1);
+            int bonus = Tier.tierFromItem(activeCards.get(23).getItem()).ordinal() + 1;
+            int globalBonusLevel = CardCaseAttributeHandler.getActiveGlobalTier(player.getUuid());
+            if (globalBonusLevel == -1) {
+                LOOTING_BONUSES.put(player.getUuid(), bonus);
+            }else {
+                LOOTING_BONUSES.put(player.getUuid(), bonus + globalBonusLevel);
+            }
         } else {
             LOOTING_BONUSES.remove(player.getUuid()); // Reset on drop
         }
@@ -165,7 +173,7 @@ public class CardCaseEffectHandler {
         boolean hasRegenerationCard = activeCards.size() > 4 &&
                 activeCards.get(4).isIn(ModTags.REGENERATION);
 
-        if(hasRegenerationCard){Tier cardTier = Tier.fromItem(activeCards.get(4).getItem());
+        if(hasRegenerationCard){Tier cardTier = Tier.tierFromItem(activeCards.get(4).getItem());
 
         int desiredAmplifier = cardTier.ordinal();
 

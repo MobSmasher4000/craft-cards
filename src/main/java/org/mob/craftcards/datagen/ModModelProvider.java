@@ -19,14 +19,13 @@ public class ModModelProvider extends FabricModelProvider {
         // no blocks here
     }
 
-
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         ModnameItemModelGenerator generator = new ModnameItemModelGenerator(itemModelGenerator);
-        // --- Standard Item Registration ---
-        itemModelGenerator.register(ModItems.CARD_CASE , Models.GENERATED);
 
-        // Standard registration for non-tiered items
+        itemModelGenerator.register(ModItems.CARD_CASE , Models.GENERATED);
+        itemModelGenerator.register(ModItems.BOOSTER_PACK , Models.GENERATED);
+
         itemModelGenerator.register(ModItems.FIRE_RESISTANCE, Models.GENERATED);
         itemModelGenerator.register(ModItems.WATER_BREATHING, Models.GENERATED);
 

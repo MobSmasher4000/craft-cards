@@ -1,6 +1,7 @@
 package org.mob.craftcards.item.custom;
 
 import io.wispforest.accessories.api.Accessory;
+import io.wispforest.accessories.api.slot.SlotReference;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.player.PlayerEntity;
@@ -9,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
@@ -17,6 +19,7 @@ import net.minecraft.world.World;
 import org.mob.craftcards.CraftCards;
 import org.mob.craftcards.CraftCardsClient;
 import org.mob.craftcards.attribute.CardCaseAttributeHandler;
+import org.mob.craftcards.attribute.CardCaseEffectHandler;
 import org.mob.craftcards.screen.CardCaseScreenHandler;
 import org.mob.craftcards.util.CardCaseInventory;
 
@@ -25,7 +28,7 @@ import java.util.List;
 public class CardCaseItem extends Item implements Accessory {
 
     public CardCaseItem(Settings settings) {
-        super(settings);
+        super(settings.maxCount(1));
     }
 
     @Override
@@ -66,5 +69,4 @@ public class CardCaseItem extends Item implements Accessory {
         Text keyName = CraftCardsClient.openCardCaseKey.getBoundKeyLocalizedText();
         tooltip.add(Text.translatable("tooltip.craftcards.open_key", keyName).formatted(Formatting.GOLD));
     }
-
 }

@@ -1,14 +1,17 @@
 package org.mob.craftcards.datagen;
 
+import mezz.jei.api.constants.Tags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import org.mob.craftcards.item.ModItems;
 
@@ -26,6 +29,31 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(RecipeExporter exporter) {
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CARD_CASE)
+                .pattern("LGL")
+                .pattern("PCP")
+                .pattern("DGD")
+                .input('L', Items.LEATHER)
+                .input('G', Items.GOLD_BLOCK)
+                .input('D', Items.DIAMOND_BLOCK)
+                .input('P', Items.PAPER)
+                .input('C', Items.CHEST)
+                .criterion("has_leather", conditionsFromItem(Items.LEATHER))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BOOSTER_PACK)
+                .pattern("RGR")
+                .pattern("PCP")
+                .pattern("DGD")
+                .input('R', Items.RED_DYE)
+                .input('G', Items.GOLD_INGOT)
+                .input('D', Items.DIAMOND)
+                .input('P', Items.PAPER)
+                .input('C', Items.NETHERITE_SCRAP)
+                .criterion("has_netherite_scrap", conditionsFromItem(Items.NETHERITE_SCRAP))
+                .offerTo(exporter);
+
+
         // Register recipes from T0 up to T5-> T6 (or until the second-to-last tier)
         makeRecipe(ModItems.ARMOR, exporter);
         makeRecipe(ModItems.ARMOR_TOUGHNESS, exporter);

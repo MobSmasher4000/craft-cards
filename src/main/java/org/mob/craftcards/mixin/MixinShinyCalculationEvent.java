@@ -12,9 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(ShinyChanceCalculationEvent.class)
 public abstract class MixinShinyCalculationEvent {
 
-    @Shadow
-    public abstract void addModifier(float modifier);
-
     @Inject(method = "calculate", at = @At("RETURN"), cancellable = true)
     private void calculate(ServerPlayerEntity player, CallbackInfoReturnable<Float> ci) {
         if (player == null){
@@ -22,9 +19,16 @@ public abstract class MixinShinyCalculationEvent {
         }
         float base_chance = ci.getReturnValue();
         float shinyBonus = CardCaseEffectHandler.getShinyBonus();
-        float bonus = base_chance + (base_chance * shinyBonus);
-        addModifier(shinyBonus);
+        if (shinyBonus <= 0.0f) {
+            return;
+        }
+        float bonus = base_chance / (1.0f + shinyBonus);
+        bonus = Math.max(1.0f, bonus);
+//        System.out.println("base shiny chance : "+base_chance);
+//        System.out.println("shiny chance : "+shinyBonus);
+//        System.out.println("bonus shiny chance : "+bonus);
         ci.setReturnValue(bonus);
+//        ci.setReturnValue(1F);
     }
 
 }

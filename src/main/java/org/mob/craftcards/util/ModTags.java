@@ -1,5 +1,6 @@
 package org.mob.craftcards.util;
 
+import io.wispforest.accessories.api.data.AccessoriesTags;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
@@ -11,6 +12,8 @@ import java.util.Arrays;
 public class ModTags {
 
     public static final TagKey<Item> CARD_ITEMS = tagmaker("card_items");
+    public static final TagKey<Item> CARD_CASE = AccessoriesTags.itemTag("cardcase");
+    public static final TagKey<Item> LOOT_CARD_ITEMS = tagmaker("loot_card_items");
 
     public static final TagKey<Item> ARMOR = tagmaker("armor");
     public static final TagKey<Item> ARMOR_TOUGHNESS = tagmaker("armor_toughness");
@@ -21,7 +24,6 @@ public class ModTags {
     public static final TagKey<Item> ENTITY_INTERACTION_RANGE = tagmaker("entity_interaction_range");
     public static final TagKey<Item> FEATHER_FALLING = tagmaker("feather_falling");
     public static final TagKey<Item> FIRE_RESISTANCE = tagmaker("fire_resistance");
-//    public static final TagKey<Item> FLYING_SPEED = tagmaker("flying_speed");
     public static final TagKey<Item> FORTUNE = tagmaker("fortune");
     public static final TagKey<Item> HEALTH_BOOST = tagmaker("health_boost");
     public static final TagKey<Item> JUMP_BOOST = tagmaker("jump_boost");
@@ -37,12 +39,6 @@ public class ModTags {
     public static final TagKey<Item> STEP_HEIGHT = tagmaker("step_height");
     public static final TagKey<Item> UNDERWATER_MINING_SPEED = tagmaker("underwater_mining_speed");
     public static final TagKey<Item> WATER_BREATHING = tagmaker("water_breathing");
-//    public static final TagKey<Item> UNDERWATER_MOVEMENT_SPEED = tagmaker("water_movement_speed");
-    public static final TagKey<Item> FISHING_EFFICIENCY = tagmaker("fishing_efficiency");
-    public static final TagKey<Item> PROJECTILE_RESISTANCE = tagmaker("projectile_resistance");
-    public static final TagKey<Item> BLAST_RESISTANCE = tagmaker("blast_resistance");
-//    private static final TagKey<Item> BLOCK_CHANCE = tagmaker("block_chance");
-
 
 //    public static final TagKey<Item>[] CARD_CASE_SLOT_TAGS = new TagKey[] {
 //            // 1. Luck Card

@@ -1,4 +1,4 @@
-// 1.21.1	2026-01-07T19:43:32.1344475	Craft Cards/Model Definitions
+// 1.21.1	2026-03-06T20:27:09.7308237	Craft Cards/Model Definitions
 df302d5e56504bd05b8ed0463e0ed0126a4dcca8 assets\craftcards\models\item\speed_boost_tier1.json
 8530522fbcadac31689ac9a7ffc604df5a6ea46c assets\craftcards\models\item\feather_falling_tier2.json
 8ab118c6774d33dd270a5834960fa57554b72733 assets\craftcards\models\item\shiny_rate_tier0.json
@@ -21,8 +21,8 @@ e4bd88a6e43368670e54723f1aa0b01f60be0f53 assets\craftcards\models\item\armor_tie
 10c9969512e7822983f3dad771fb4faaf5a8301f assets\craftcards\models\item\damage_tier5.json
 b38e7267e50ea31f6920cd47a7e8b5dc454708dc assets\craftcards\models\item\card_case.json
 f45991d73cee3afbf2cb38a79e0668881fd376a5 assets\craftcards\models\item\entity_interaction_range_tier6.json
-3b7bf20395c3d0aa3e38d46b2a0538043a21e1be assets\craftcards\models\item\feather_falling_tier3.json
 4f4a5e40b888585c72ac444cf49f37770729cd18 assets\craftcards\models\item\speed_boost_tier2.json
+3b7bf20395c3d0aa3e38d46b2a0538043a21e1be assets\craftcards\models\item\feather_falling_tier3.json
 ec3efa2480bf9c48fb4ab356845c4c65b05b05cf assets\craftcards\models\item\block_interaction_range_tier4.json
 8774e1ee5928560d669fa073c88cdb9cb47a85f1 assets\craftcards\models\item\armor_toughness_tier0.json
 05e7d6197c9c239dcc9418c5e1f768a2720b4f7d assets\craftcards\models\item\looting_tier5.json
@@ -44,13 +44,14 @@ d8b56276059043521402bba2e3832cce95dacd83 assets\craftcards\models\item\underwate
 08a940f412be4283d4e527f80f0e190aef3dd65c assets\craftcards\models\item\entity_interaction_range_tier5.json
 8196ecf338fcbedb95e032e35a697eb2222a3436 assets\craftcards\models\item\looting_tier3.json
 bf2cbf68a221c210ef14af391c8c5ef6f85f18fb assets\craftcards\models\item\size_down_tier3.json
-a5ff2a65a7ff4916e2ff68b2def77380740b29d9 assets\craftcards\models\item\luck_boost_tier1.json
 48589e81f9db3c2e59f7e3856b8bcd76febb7687 assets\craftcards\models\item\mining_speed_tier4.json
+a5ff2a65a7ff4916e2ff68b2def77380740b29d9 assets\craftcards\models\item\luck_boost_tier1.json
 e5f064f73c414b420fc51f905c11f10bcc25a2b5 assets\craftcards\models\item\step_height_tier2.json
 7951a2a7902a52d6119dd34a6e186daf7b371735 assets\craftcards\models\item\armor_tier3.json
 e66569c0e88c0443cf03a3333703a2bb831ccfa3 assets\craftcards\models\item\armor_tier0.json
 403231584378d73d78df286b510042ec4cfae59a assets\craftcards\models\item\mining_speed_tier1.json
 d955ba4434ae275d3fd3fcc18d700aeac2d31325 assets\craftcards\models\item\block_interaction_range_tier2.json
+2b5fef57d30f46e68e478b3ccba28c6ce3b938ae assets\craftcards\models\item\booster_pack.json
 190919c2cfdbb58c836d5dd65e53dfa78c03fd2f assets\craftcards\models\item\attack_speed_tier6.json
 a0f8887f564bb7c2bc8cec1f438b806f69c48db8 assets\craftcards\models\item\luck_boost_tier2.json
 cfc6857f99ead6d59fdc78f997f6367d9dfd2a0c assets\craftcards\models\item\sneak_speed_tier3.json

@@ -1,4 +1,4 @@
-// 1.21.1	2026-01-07T19:43:32.1314549	Craft Cards/Tags for minecraft:item
+// 1.21.1	2026-03-06T20:27:09.7272493	Craft Cards/Tags for minecraft:item
 3928c41d6c39b83e20203055a36d0c0e03de1104 data\craftcards\tags\item\fire_resistance.json
 0845c0a9787b0ddfc61aec1af82be66e1ee2af8b data\craftcards\tags\item\armor.json
 5ef1571cca4755d3007c6868eadb42cb957fd174 data\craftcards\tags\item\size_up.json
@@ -10,10 +10,11 @@ fe287a75015342b4afc5219ca1e26a10dbb912ce data\craftcards\tags\item\health_boost.
 411a4fe4634ea6388afa391323db80c11ab1aa86 data\craftcards\tags\item\fortune.json
 98fe0e557ffb1f3ca8879a3ee444cc1ab8e65511 data\craftcards\tags\item\looting.json
 f729570c23d9a3fb57e84c497458cf54d1591e35 data\craftcards\tags\item\entity_interaction_range.json
+33396db769f9d1372ab2f7179695f8bac5c1545c data\accessories\tags\item\cardcase.json
 af36527b94e06b91d906a58034ce072fcc5e17ed data\craftcards\tags\item\attack_speed.json
 3713e95fb0e79749aca98665db3d490870b84981 data\craftcards\tags\item\capture_rate.json
-33396db769f9d1372ab2f7179695f8bac5c1545c data\accessories\tags\item\belt.json
 15dee0f3339133475221f31e43c09d5cb5b5a71d data\craftcards\tags\item\mining_speed.json
+e2b8c2234dbb8d6ed60247d486d16c64306b65bc data\craftcards\tags\item\loot_card_items.json
 6ec25d8e5f7f49912250a7216d454d803e3ffcec data\craftcards\tags\item\card_items.json
 31cfdd2ab582687f0b81e00449e9af36e8a5d4e9 data\craftcards\tags\item\damage.json
 c2acaa2f860b38de7e75adf890c775c9767271c7 data\craftcards\tags\item\water_breathing.json

@@ -1,25 +1,19 @@
 package org.mob.craftcards.attribute;
 
 import com.cobblemon.mod.common.api.Priority;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.server.network.ServerPlayerEntity;
-import org.mob.craftcards.event.CommonEvents;
-
-import java.util.UUID;
+import com.cobblemon.mod.common.api.events.CobblemonEvents;
 
 public class Attributes {
 
     public static void init() {
-        CommonEvents.POKEMON_CATCH_RATE.register(event -> {
-            LivingEntity entity = event.getThrower();
-            float current = event.getCatchRate();
+        CobblemonEvents.POKEMON_CATCH_RATE.subscribe(Priority.LOWEST,pokemonCatchRateEvent -> {
+            float current = pokemonCatchRateEvent.getCatchRate();
             float captureBonus = CardCaseEffectHandler.getCaptureBonus();
             float rate = current + (current * captureBonus);
 
             if(current != rate) {
-                event.setCatchRate(rate);
+                pokemonCatchRateEvent.setCatchRate(rate);
             }
-        }, Priority.LOWEST);
+        });
     }
-
 }

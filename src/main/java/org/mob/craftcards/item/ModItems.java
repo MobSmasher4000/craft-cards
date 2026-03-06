@@ -8,16 +8,19 @@ import net.minecraft.util.Identifier;
 import org.mob.craftcards.CraftCards;
 import org.mob.craftcards.component.ModDataComponentTypes;
 import org.mob.craftcards.helper.Tier;
+import org.mob.craftcards.item.custom.BoosterPackItem;
 import org.mob.craftcards.item.custom.CardCaseItem;
+import org.mob.craftcards.item.custom.SimpleCardItem;
 import org.mob.craftcards.item.custom.TieredCardItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ModItems {
-    public static final Item CARD_CASE = register("card_case", new CardCaseItem(new Item.Settings().maxCount(1)));
-    public static final Item FIRE_RESISTANCE = register("fire_resistance", new Item(new Item.Settings()));
-    public static final Item WATER_BREATHING = register("water_breathing", new Item(new Item.Settings()));
+    public static final Item CARD_CASE = register("card_case", new CardCaseItem(new Item.Settings()));
+    public static final Item FIRE_RESISTANCE = register("fire_resistance", new SimpleCardItem(new Item.Settings(),"tooltip.craftcards.fire_water_effect"));
+    public static final Item WATER_BREATHING = register("water_breathing", new SimpleCardItem(new Item.Settings(),"tooltip.craftcards.fire_water_effect"));
+    public static final Item BOOSTER_PACK = register("booster_pack", new BoosterPackItem(new Item.Settings()));
 
     public static final List<Item> ARMOR = registerTier("armor");
     public static final List<Item> ARMOR_TOUGHNESS = registerTier("armor_toughness");
